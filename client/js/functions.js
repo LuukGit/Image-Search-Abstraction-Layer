@@ -1,7 +1,11 @@
 var mongo = require("mongodb").MongoClient;
 var mongoURL = "mongodb://client:client@ds013579.mlab.com:13579/freecodecamp-database";
 
+var latestQueries;
+
 module.exports = {
+    latestQueries:  function returnQueries(){return latestQueries;},
+    
     parseResults:   function parseResults(response)
                     {
                         var items = response.items;
@@ -27,8 +31,8 @@ module.exports = {
                         }
                         return objects;
                     },
-        
-    initQueries:    function initQueries(latestQueries)
+                    
+    initQueries:    function initQueries()
                     {
                         mongo.connect(mongoURL, function(err, db) {
                             if (err) { throw err; }
@@ -40,22 +44,25 @@ module.exports = {
                                 {
                                     console.log(docs);
                                     latestQueries = docs.queries;
+                                    console.log(latestQueries);
                                     db.close();
                                 }
                             });
                         });       
                     },
         
-    saveQuery:      function saveQuery(query, latestQueries)
+    saveQuery:      function saveQuery(query)
                     {
+                        // Add the new query to the latestQueries. Re
                         latestQueries.push({term: query, when: new Date().toISOString()});
                         if (latestQueries.length > 10)
                         {
-                            latestQueries.pop();
+                            latestQueries.shift();
                         }
                         console.log(latestQueries);
                         var queries = latestQueries;
                         
+                        // Update the queries in the database
                         mongo.connect(mongoURL, function(err, db) {
                             if (err) { throw err; }
                             db.collection("queries").replaceOne({

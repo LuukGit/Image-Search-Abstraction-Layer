@@ -20,12 +20,10 @@ var googleSearch = new GoogleSearch({
   cx: "004013124895533866227:pi661a3hh0e"
 });
 
-var latestQueries = [];
-
 app.get("/api/imagesearch/:query*", function(req, res) {
     var offset = 1;
     var query = req.url.replace("/api/imagesearch/", "").split("%20").join(" ");
-    functions.saveQuery(query, latestQueries);
+    functions.saveQuery(query);
     
     // Handle offset option
     if (query.match(/\?offset=/))
@@ -53,11 +51,11 @@ app.get("/api/imagesearch/:query*", function(req, res) {
 });
 
 app.get("/api/latest/imagesearch", function(req, res) {
-    res.send(latestQueries);
+    res.send(functions.latestQueries());
 });
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
-    functions.initQueries(latestQueries);
+    functions.initQueries();
     var addr = server.address();
     console.log("App listening at", addr.address + ":" + addr.port);
 });
