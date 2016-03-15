@@ -51,7 +51,7 @@ app.get("/api/imagesearch/:query*", function(req, res) {
 });
 
 app.get("/api/latest/imagesearch", function(req, res) {
-    res.send(functions.latestQueries());
+    res.send(functions.getLatestQueries());
 });
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
