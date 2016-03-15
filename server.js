@@ -1,12 +1,3 @@
-/*
-User Story: I can get the image URLs, alt text and page urls for a set of images relating to a given search string.
-User Story: I can paginate through the responses by adding a ?offset=2 parameter to the URL.
-User Story: I can get a list of the most recently submitted search strings.
-
-cx: 004013124895533866227:pi661a3hh0e
-API Key: AIzaSyDMaaMGWQBtufrRh3BPqInmLvuj9MFL8ys 
-*/
-
 var http = require('http');
 var express = require('express');
 var functions = require("./client/js/functions.js");

@@ -73,7 +73,6 @@ module.exports = {
                                 if (err) { throw err; }
                                 console.log(data);
                                 db.close();
-                                return queries;
                             });
                         });
                     }
