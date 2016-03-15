@@ -37,11 +37,7 @@ app.get("/api/imagesearch/:query*", function(req, res) {
       num: offset 
     }, function(error, response) {
         if (error) { throw error; }
-            if (response === null)
-            {
-                res.send("Error");
-            }
-          res.send(functions.parseResults(response));
+          res.send("hha");
     });
 });
 
