@@ -4,7 +4,7 @@ var mongoURL = "mongodb://client:client@ds013579.mlab.com:13579/freecodecamp-dat
 var latestQueries;
 
 module.exports = {
-    latestQueries:  function getLatestQueries(){return latestQueries;},
+    getLatestQueries:  function getLatestQueries(){return latestQueries;},
     
     parseResults:   function parseResults(response)
                     {
