@@ -30,15 +30,16 @@ app.get("/api/imagesearch/:query*", function(req, res) {
         }
         query = query.split("?")[0];
     }
-    
+    res.send(query + offset);
+    /*
     googleSearch.build({
       q: query,
       fileType: "jpg",
       num: offset 
     }, function(error, response) {
         if (error) { throw error; }
-          res.send("hha");
-    });
+          res.send(functions.parseResults(response));
+    });*/
 });
 
 app.get("/api/latest/imagesearch", function(req, res) {
