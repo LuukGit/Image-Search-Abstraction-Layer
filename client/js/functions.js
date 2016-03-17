@@ -1,5 +1,5 @@
 var mongo = require("mongodb").MongoClient;
-var mongoURL = "mongodb://client:client@ds013579.mlab.com:13579/freecodecamp-database";
+var mongoURL = process.env.MONGOLAB_URL;
 
 var latestQueries;
 
