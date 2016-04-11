@@ -47,6 +47,9 @@ module.exports = {
                                     console.log(latestQueries);
                                     db.close();
                                 }
+                                else {
+                                    latestQueries = [];
+                                }
                             });
                         });       
                     },
