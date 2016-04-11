@@ -68,7 +68,7 @@ module.exports = {
                         // Update the queries in the database
                         mongo.connect(mongoURL, function(err, db) {
                             if (err) { throw err; }
-                            db.collection("queries").replaceOne({
+                            db.collection("queries").update({
                                 
                             },{
                                 queries  
