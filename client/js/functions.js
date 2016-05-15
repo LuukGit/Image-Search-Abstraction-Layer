@@ -34,6 +34,7 @@ module.exports = {
                     
     initQueries:    function initQueries()
                     {
+                        console.log(mongoURL);
                         mongo.connect(mongoURL, function(err, db) {
                             if (err) { throw err; }
                             

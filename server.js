@@ -44,6 +44,14 @@ app.get("/api/latest/imagesearch", function(req, res) {
     res.send(functions.getLatestQueries());
 });
 
+app.get("/*", function(req , res) {
+   res.json({error: "invalid URL", 
+        example_URLs: [{image_search: "https://luuk-img-search-abstract-layer.herokuapp.com/api/imagesearch/lolcats%20funny?offset=5"}, 
+                            {search_history: "https://luuk-img-search-abstract-layer.herokuapp.com/api/latest/imagesearch"}]
+       
+   }); 
+});
+
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
     functions.initQueries();
     var addr = server.address();
